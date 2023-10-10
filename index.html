@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Filter</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles for the page */
+        body {
+            background-color: #393642; /* Set your desired background color here */
+        }
+
+        /* Custom styles for the search filter */
+        .search-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Search input and button -->
+        <div class="search-container">
+        <input type="text" id="searchInput" class="form-control" placeholder="Search...">
+        </div>
+
+        <!-- List of items to be filtered -->
+        <ul id="itemList" class="list-group mt-3">
+            <li class="list-group-item">1. Orange</li>
+            <li class="list-group-item">2. tomato</li>
+            <li class="list-group-item">3. Oil</li>
+            <li class="list-group-item">4. Milk</li>
+            <li class="list-group-item">5. Peanuts</li>
+            <li class="list-group-item">6. Cherry</li>
+            <li class="list-group-item">7. Shake</li>
+            <li class="list-group-item">8. banana</li>
+            <li class="list-group-item">9. choco</li>
+            <li class="list-group-item">5. Onion</li>
+        </ul>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Function to filter items based on the search input
+        function filterItems() {
+            const searchInput = document.getElementById('searchInput');
+            const filter = searchInput.value.toLowerCase();
+            const itemList = document.getElementById('itemList');
+            const items = itemList.getElementsByTagName('li');
+
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                const text = item.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            }
+        }
+
+        // Attach event listener to the search input
+        document.getElementById('searchInput').addEventListener('input', filterItems);
+    </script>
+</body>
+</html>
